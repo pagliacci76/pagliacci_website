@@ -3,17 +3,72 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Mi página</title>
+  <title>pagliacci</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <header class="site-header">
-    <img src="logo.png" alt="Logo de la página" class="site-logo">
-    <h1 class="site-title">Título de la página</h1>
+    <div class="brand">
+      <img src="logo.png" alt="Logo de pagliacci" class="site-logo">
+      <div class="title-and-nav">
+        <h1 class="site-title">pagliacci</h1>
+        <nav class="main-nav" aria-label="Menú principal">
+          <ul>
+            <li><a href="#poemas">Poemas</a></li>
+            <li><a href="#musica">Música</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
   </header>
 
   <main>
-    <p>Contenido de la página...</p>
+    <section id="poemas" class="section poemas">
+      <h2>Poemas</h2>
+
+      <!-- Plantilla/estructura de un poema -->
+      <article class="poema">
+        <header class="poema-meta">
+          <h3 class="poema-titulo">[Título del poema]</h3>
+          <p class="poema-autor">por <span>[Nombre del autor]</span></p>
+          <p class="poema-info">[Año / Notas / Estilo / Métrica]</p>
+        </header>
+
+        <div class="poema-cuerpo">
+          <p class="estrofa">Verso 1 de la primera estrofa,
+            Verso 2 de la primera estrofa,
+            Verso 3 de la primera estrofa.</p>
+
+          <p class="estrofa">Verso 1 de la segunda estrofa,
+            Verso 2 de la segunda estrofa.</p>
+
+          <!-- Añade más estrofas según necesites -->
+        </div>
+
+        <footer class="poema-footer">
+          <p class="poema-notas">[Notas del poema o fuente]</p>
+        </footer>
+      </article>
+    </section>
+
+    <section id="musica" class="section musica">
+      <h2>Música</h2>
+      <p>Aquí puedes listar pistas, playlists o insertar un reproductor.</p>
+      <!-- Ejemplo mínimo de un listado -->
+      <ul class="lista-musica">
+        <li>Pista 1 — [Artista]</li>
+        <li>Pista 2 — [Artista]</li>
+      </ul>
+    </section>
   </main>
+
+  <footer class="site-footer">
+    <p>&copy; <span id="anio"></span> pagliacci</p>
+  </footer>
+
+  <script>
+    // Actualiza año en el pie
+    document.getElementById('anio').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
