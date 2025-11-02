@@ -1,59 +1,44 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pagliacci Website</title>
-    <!-- Google Fonts: Cinzel y Lora -->
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Lora:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Poema — Pagliacci</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <div class="logo-title">
-            <img src="logo.png" alt="Logo Pagliacci" class="logo">
-            <h1>PAGLIACCI</h1>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#sobre-mi">Sobre la página</a></li>
-                <li><a href="#servicios">Dibujos</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main>
-        <section id="inicio">
-            <h2>Inicio</h2>
-            <p>¡Esta es tu página web personalizada! Puedes editar este texto para describir tu sitio.</p>
-        </section>
-        <section id="sobre-mi">
-            <h2>Sobre mí</h2>
-            <p>Aquí puedes contar quién eres, qué haces, tus intereses, etc.</p>
-        </section>
-        <section id="servicios">
-            <h2>Servicios</h2>
-            <ul>
-                <li>Servicio 1</li>
-                <li>Servicio 2</li>
-                <li>Servicio 3</li>
-            </ul>
-        </section>
-        <section id="contacto">
-            <h2>Contacto</h2>
-            <form>
-                <label for="nombre">Nombre:</label>
-                <input type="text" id="nombre" name="nombre"><br>
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email"><br>
-                <label for="mensaje">Mensaje:</label>
-                <textarea id="mensaje" name="mensaje"></textarea><br>
-                <button type="submit">Enviar</button>
-            </form>
-        </section>
-    </main>
-    <footer>
-        <p>&copy; 2025 Pagliacci Website. Todos los derechos reservados.</p>
-    </footer>
+  <header class="site-header">
+    <a class="brand" href="/">
+      <img src="assets/logo.png" alt="Logo Pagliacci" class="logo">
+      <span class="site-title">Pagliacci</span>
+    </a>
+  </header>
+
+  <main class="content">
+    <article class="poem">
+      <h1 class="poem-title">Título del Poema</h1>
+      <p class="poem-author">Autor — Año</p>
+
+      <div class="poem-body">
+        <p>Primera línea del poema, que puede ser más larga si hace falta.</p>
+        <p>Segunda línea del poema, con pausa y ritmo.</p>
+        <p>Tercera línea que sigue el compás de la lectura.</p>
+        <p>Cuarta línea para cerrar la estrofa.</p>
+      </div>
+
+      <footer class="poem-footer">
+        <p class="credits">Créditos y notas sobre el poema.</p>
+      </footer>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <p>© <span id="year"></span> Pagliacci</p>
+  </footer>
+
+  <script>
+    // Set current year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
