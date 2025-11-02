@@ -2,31 +2,32 @@
 <html lang="es">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#b12a2a">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#8b0000" />
   <title>pagliacci</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<!-- Inserta en tu header (reemplaza la parte actual del logo) -->
-<header class="site-header">
-  <div class="brand">
-    <div class="logo-wrapper">
-      <img src="logo.png" alt="Logo de pagliacci" class="site-logo">
-    </div>
+  <header class="site-header">
+    <div class="header-vertical">
+      <div class="logo-top">
+        <div class="logo-wrapper">
+          <img src="logo.png" alt="Logo de pagliacci" class="site-logo">
+        </div>
+      </div>
 
-    <div class="title-and-nav">
-      <h1 class="site-title">pagliacci</h1>
+      <div class="title-large">
+        <h1 class="site-title">pagliacci</h1>
+      </div>
 
       <nav class="main-nav" aria-label="Menú principal">
-        <ul>
+        <ul class="nav-list">
           <li><a href="#poemas">Poemas</a></li>
           <li><a href="#musica">Música</a></li>
         </ul>
       </nav>
     </div>
-  </div>
-</header>
+  </header>
 
   <main>
     <section id="poemas" class="section poemas">
@@ -42,13 +43,11 @@
 
         <div class="poema-cuerpo">
           <p class="estrofa">Verso 1 de la primera estrofa,
-            Verso 2 de la primera estrofa,
-            Verso 3 de la primera estrofa.</p>
+Verso 2 de la primera estrofa,
+Verso 3 de la primera estrofa.</p>
 
           <p class="estrofa">Verso 1 de la segunda estrofa,
-            Verso 2 de la segunda estrofa.</p>
-
-          <!-- Añade más estrofas según necesites -->
+Verso 2 de la segunda estrofa.</p>
         </div>
 
         <footer class="poema-footer">
@@ -60,7 +59,6 @@
     <section id="musica" class="section musica">
       <h2>Música</h2>
       <p>Aquí puedes listar pistas, playlists o insertar un reproductor.</p>
-      <!-- Ejemplo mínimo de un listado -->
       <ul class="lista-musica">
         <li>Pista 1 — [Artista]</li>
         <li>Pista 2 — [Artista]</li>
@@ -73,7 +71,6 @@
   </footer>
 
   <script>
-    // Actualiza año en el pie
     document.getElementById('anio').textContent = new Date().getFullYear();
   </script>
 </body>
