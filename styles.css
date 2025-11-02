@@ -1,156 +1,264 @@
 :root{
-  /* Colores (mantengo exactamente los tuyos) */
-  --bg: #ffffff;
-  --text: #222222;
-  --accent: #b12a2a; /* color de acento */
-  --muted: #666666;
-
-  /* Evitar que navegadores móviles cambien automáticamente esquema de color */
-  color-scheme: light;
+  /* Paleta gótica oscura (mantengo tus colores, ajustados al tema oscuro) */
+  --bg: #070607;
+  --surface: #0e0e0e;
+  --text: #f6f5f3;
+  --muted: #bfb8b2;
+  --accent: #8b0000;
+  --accent-2: #6b0000;
+  --border: rgba(255,255,255,0.04);
+  color-scheme: dark;
 }
 
 /* Reset ligero */
 *{box-sizing:border-box}
-
-/* Reforzamos background-color y color usando las variables para que móviles no omitan los valores */
 html,body{
   margin:0;
   padding:0;
   height:100%;
-  background-color:var(--bg); /* explícito */
-  color:var(--text);           /* explícito */
+  background-color:var(--bg);
+  color:var(--text);
   font-family:system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
   -webkit-font-smoothing:antialiased;
   -moz-osx-font-smoothing:grayscale;
 }
 
-/* Encabezado */
+/* HEADER: diseño vertical (logo pequeño arriba, título grande, barra de navegación) */
 .site-header{
-  border-bottom: 1px solid rgba(0,0,0,0.06);
-  padding:12px 16px;
-  /* conservar gradiente pero asegurar color de fondo base */
-  background-color:var(--bg);
-  background-image: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(255,255,255,0.96));
-  background-repeat:no-repeat;
+  border-bottom: 1px solid var(--border);
+  background-color: var(--surface);
   position:sticky;
   top:0;
-  z-index:20;
+  z-index:40;
+  padding:14px 18px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.6);
 }
 
-/* Contenedor de marca (logo + título + nav) */
-.brand{
+/* Contenedor vertical */
+.header-vertical{
   display:flex;
-  align-items:center;       /* centra verticalmente */
-  gap:12px;
+  flex-direction:column;
+  align-items:center;
+  gap:10px;
+  max-width:1100px;
+  margin:0 auto;
 }
 
-/* Contenedor para recortar el logo (cropped) */
+/* Logo en la parte superior (pequeño) */
+.logo-top{ display:flex; justify-content:center; align-items:center; }
+
+/* Wrapper para recortar el logo */
 .logo-wrapper{
-  width:56px;        /* tamaño visible del recorte; ajusta si quieres más pequeño/grande */
+  width:56px;
   height:56px;
-  flex:0 0 auto;
-  overflow:hidden;   /* recorta la imagen dentro */
-  display:block;
-  border-radius:8px; /* cambia a 50% para círculo, si prefieres */
-  background-color:transparent;
+  overflow:hidden;
+  border-radius:8px; /* cambiar a 50% si quieres círculo */
+  background:linear-gradient(135deg, rgba(255,255,255,0.015), rgba(0,0,0,0.06));
+  display:inline-block;
+  border: 1px solid rgba(255,255,255,0.03);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.02);
 }
 
-/* Logo: se adapta al contenedor y "se recorta" con object-fit:cover */
+/* Imagen del logo recortada */
 .site-logo{
   width:100%;
   height:100%;
-  object-fit:cover;  /* cover recorta la imagen para llenar el contenedor */
+  object-fit:cover;
   display:block;
-  transform-origin:center;
+  transition: transform .18s ease;
 }
+.logo-wrapper:hover .site-logo{ transform: scale(1.03); }
 
-/* Título y navegación agrupados */
-.title-and-nav{
+/* Título grande (centrado) */
+.title-large{
   display:flex;
+  justify-content:center;
   align-items:center;
-  gap:16px;
-  flex:1 1 auto;
-  justify-content:space-between;
+  width:100%;
 }
-
-/* Título */
 .site-title{
   margin:0;
-  font-size:1.25rem;
+  font-size:2.1rem; /* grande */
   color:var(--accent);
-  font-weight:700;
-  letter-spacing:0.5px;
-  line-height:1;
-  display:flex;
-  align-items:center;
+  font-weight:900;
+  letter-spacing:1px;
+  text-transform:lowercase;
+  text-shadow: 0 4px 0 rgba(0,0,0,0.6);
+  display:inline-block;
 }
 
-/* Navegación principal */
-.main-nav ul{
+/* Línea decorativa bajo título */
+.title-large .site-title::after{
+  content:"";
+  display:block;
+  width:120px;
+  height:3px;
+  margin:10px auto 0 auto;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  border-radius:2px;
+  opacity:0.95;
+}
+
+/* Barra de navegación centrada estilo tabs */
+.main-nav{
+  width:100%;
+  display:flex;
+  justify-content:center;
+  margin-top:4px;
+}
+.nav-list{
+  display:flex;
+  gap:10px;
   list-style:none;
-  display:flex;
-  gap:12px;
-  margin:0;
   padding:0;
-  align-items:center;
+  margin:0;
 }
-.main-nav a{
-  text-decoration:none;
+.nav-list a{
+  display:inline-block;
+  padding:10px 14px;
   color:var(--text);
-  padding:6px 8px;
-  border-radius:6px;
-  transition:background .15s, color .15s;
+  background:transparent;
+  border:1px solid transparent;
+  border-radius:8px;
+  text-decoration:none;
+  font-weight:700;
+  letter-spacing:0.6px;
+  transition: background .12s, color .12s, transform .12s, border-color .12s;
 }
-.main-nav a:hover,
-.main-nav a:focus{
-  background:rgba(0,0,0,0.04);
-  color:var(--accent);
+.nav-list a:hover,
+.nav-list a:focus{
+  background: rgba(139,0,0,0.08);
+  color: var(--accent);
+  border-color: rgba(139,0,0,0.12);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(107,0,0,0.06);
 }
 
-/* Contenido principal */
-main{padding:20px 16px;max-width:1000px;margin:0 auto}
+/* Indicar la pestaña activa (example: add .active to <a>) */
+.nav-list a.active{
+  background: linear-gradient(90deg, rgba(139,0,0,0.08), rgba(107,0,0,0.06));
+  color:var(--accent);
+  border-color: rgba(139,0,0,0.18);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.6);
+}
+
+/* MAIN content */
+main{
+  padding:26px 18px;
+  max-width:1000px;
+  margin:0 auto;
+}
 
 /* Secciones */
-.section{margin-bottom:28px}
-.section h2{margin:0 0 12px 0;color:var(--accent)}
+.section{
+  margin-bottom:32px;
+}
+.section h2{
+  margin:0 0 12px 0;
+  color:var(--accent);
+  font-weight:700;
+  letter-spacing:0.6px;
+  font-size:1.1rem;
+  text-shadow: 0 1px 0 rgba(0,0,0,0.6);
+}
 
-/* Poema: estilos semánticos y legibles */
-.poema{background:rgba(0,0,0,0.02);padding:14px;border-radius:8px}
-.poema-meta{margin-bottom:8px}
-.poema-titulo{margin:0;font-size:1.1rem}
-.poema-autor{margin:4px 0 0 0;color:var(--muted);font-size:.95rem}
-.poema-cuerpo .estrofa{margin:10px 0;line-height:1.55;white-space:pre-wrap}
+/* Poema: caja con detalles góticos */
+.poema{
+  background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(0,0,0,0.03));
+  border: 1px solid rgba(255,255,255,0.02);
+  padding:18px;
+  border-radius:10px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+  position:relative;
+  overflow:hidden;
+}
+.poema::before{
+  content:"";
+  position:absolute;
+  left:-40px;
+  top:-40px;
+  width:120px;
+  height:120px;
+  background: radial-gradient(circle at 30% 30%, rgba(139,0,0,0.03), transparent 30%);
+  transform: rotate(15deg);
+  pointer-events:none;
+  opacity:0.9;
+}
 
-/* Música: lista simple */
-.lista-musica{padding-left:20px}
+.poema-meta{margin-bottom:10px}
+.poema-titulo{
+  margin:0;
+  font-size:1.16rem;
+  color:var(--accent);
+  font-weight:800;
+  letter-spacing:0.5px;
+}
+.poema-autor{
+  margin:6px 0 0 0;
+  color:var(--muted);
+  font-size:.95rem;
+}
+.poema-cuerpo .estrofa{
+  margin:12px 0;
+  line-height:1.6;
+  white-space:pre-wrap;
+  color:var(--text);
+  font-size:1rem;
+}
 
-/* Pie */
-.site-footer{padding:12px 16px;border-top:1px solid rgba(0,0,0,0.04);text-align:center;color:var(--muted)}
+/* Música: lista con estilo oscuro */
+.lista-musica{
+  padding-left:20px;
+  color:var(--text);
+}
+.lista-musica li{
+  margin:8px 0;
+  padding:8px 12px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(0,0,0,0.04));
+  border-radius:8px;
+  border:1px solid rgba(255,255,255,0.02);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.6);
+}
 
-/* Responsive: en pantallas pequeñas mantén logo y título en la misma línea */
-@media (max-width:600px){
-  .brand{
-    align-items:center;
-    gap:10px;
-  }
-  .title-and-nav{
-    /* mantener en fila para que logo esté siempre al lado del título */
+/* Footer */
+.site-footer{
+  padding:16px 18px;
+  border-top:1px solid rgba(255,255,255,0.02);
+  text-align:center;
+  color:var(--muted);
+  font-size:.95rem;
+}
+
+/* Links */
+a{ color:var(--accent); }
+a:hover{ color:var(--accent-2); text-decoration:underline; }
+
+/* Responsive adjustments */
+/* En pantallas más anchas (>= 900px) podemos mostrar la versión horizontal opcional
+   con logo al lado del título; si prefieres siempre vertical, quitar este bloque */
+@media (min-width:900px){
+  /* cambia a una cabecera con logo a la izquierda y título/nav a la derecha */
+  .header-vertical{
     flex-direction:row;
     align-items:center;
-    gap:10px;
-    justify-content:flex-start;
+    justify-content:space-between;
+    gap:18px;
   }
-  .main-nav ul{
-    gap:8px;
-    flex-wrap:wrap;
-  }
-  .logo-wrapper{width:48px;height:48px} /* reduce el recorte en móvil */
-  .site-title{font-size:1.05rem}
+  .logo-top{ order:0 }
+  .title-large{ order:0; text-align:left; }
+  .main-nav{ order:0; justify-content:flex-end; }
+  .site-title{ font-size:1.4rem; text-transform:none; }
+  .title-large .site-title::after{ width:36px; height:2px; margin:6px 0 0 10px; display:inline-block; vertical-align:middle; }
 }
 
-/* Variante opcional: recorte circular (descomenta si quieres círculo) */
-/*
-.logo-wrapper{
-  border-radius:50%;
+/* Mobile tweaks: mantener vertical y compacto */
+@media (max-width:600px){
+  .site-header{ padding:12px 12px }
+  .logo-wrapper{ width:48px; height:48px }
+  .site-title{ font-size:1.6rem }
+  main{ padding:18px 12px }
+  .nav-list a{ padding:8px 10px; font-size:.95rem }
 }
-*/
+
+/* Focus outline para accesibilidad */
+:focus{ outline: 3px solid rgba(139,0,0,0.18); outline-offset: 2px; border-radius: 6px; }
