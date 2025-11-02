@@ -1,142 +1,21 @@
-/* Tipografía y colores */
-:root{
-  --bg: #fff;
-  --text: #111;
-  --muted: #555;
-  --accent: #b02e2e;
-  --max-width: 720px;
-  --gutter: 1.25rem;
-  --radius: 9999px; /* para círculo */
-  font-size: 16px;
+/* Alinea logo y título horizontalmente */
+.site-header {
+  display: flex;
+  align-items: center; /* centra verticalmente logo y texto */
+  gap: 12px;           /* separación entre logo y título */
+  padding: 12px 16px;
 }
 
-/* Dark mode (opcional) */
-@media (prefers-color-scheme: dark){
-  :root{
-    --bg: #0b0b0b;
-    --text: #eaeaea;
-    --muted: #bdbdbd;
-  }
+/* Ajusta tamaño del logo */
+.site-logo {
+  width: 48px;         /* cambia según necesites */
+  height: auto;
+  display: block;
 }
 
-*{box-sizing:border-box}
-html,body{height:100%}
-body{
-  margin:0;
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-  background:var(--bg);
-  color:var(--text);
-  -webkit-font-smoothing:antialiased;
-  -moz-osx-font-smoothing:grayscale;
-  line-height:1.6;
-  padding:calc(var(--gutter) * 0.5);
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-}
-
-/* Header */
-.site-header{
-  width:100%;
-  max-width:var(--max-width);
-  display:flex;
-  align-items:center;
-  padding:0.5rem 0;
-}
-
-.brand{
-  display:flex;
-  align-items:center;
-  gap:0.75rem;
-  text-decoration:none;
-  color:inherit;
-}
-
-.logo{
-  width:56px;
-  height:56px;
-  object-fit:cover;
-  border-radius:var(--radius); /* recorta en círculo */
-  border:0; /* elimina marco */
-  display:inline-block;
-  vertical-align:middle;
-}
-
-/* Ajusta el tamaño del logo en móvil */
-@media (max-width:420px){
-  .logo{ width:48px; height:48px; }
-}
-
-/* Título del sitio */
-.site-title{
-  font-weight:700;
-  font-size:1.125rem;
-  letter-spacing:0.01em;
-}
-
-/* Contenido principal */
-.content{
-  width:100%;
-  max-width:var(--max-width);
-  padding: calc(var(--gutter) * 0.75) 0;
-}
-
-/* Poema */
-.poem{
-  background:transparent;
-  padding:0 0;
-  margin:0 auto;
-}
-
-.poem-title{
-  font-size:1.75rem;
-  margin:0 0 0.25rem 0;
-  line-height:1.15;
-}
-
-.poem-author{
-  margin:0 0 1rem 0;
-  color:var(--muted);
-  font-size:0.95rem;
-}
-
-/* Cuerpo del poema: cada línea en <p> para control preciso */
-.poem-body{
-  font-size:1.125rem;
-  max-width:100%;
-  margin:0 0 1.25rem 0;
-  padding:0 0.25rem;
-  text-wrap:balance;
-}
-
-/* Espaciado entre versos */
-.poem-body p{
-  margin:0 0 0.75rem 0;
-  white-space:pre-wrap; /* respeta saltos si los añades */
-}
-
-/* Footer del poema */
-.poem-footer .credits{
-  color:var(--muted);
-  font-size:0.9rem;
-  margin-top:1rem;
-}
-
-/* Footer del sitio */
-.site-footer{
-  width:100%;
-  max-width:var(--max-width);
-  padding:0.75rem 0;
-  color:var(--muted);
-  font-size:0.85rem;
-  text-align:center;
-  margin-top:auto;
-}
-
-/* Lectura cómoda en pantallas pequeñas */
-@media (max-width:600px){
-  :root{ font-size:15px }
-  .content{ padding:0 0; }
-  .poem-title{ font-size:1.4rem; }
-  .poem-body{ font-size:1rem; padding:0 0; }
+/* Opcional: estilo del título */
+.site-title {
+  font-size: 1.25rem;
+  margin: 0;
+  font-weight: 600;
 }
