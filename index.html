@@ -30,40 +30,51 @@
   </header>
 
   <main>
-    <section id="poemas" class="section poemas">
+<section id="poemas" class="section poemas">
   <h2>Poemas</h2>
 
-  <div class="poema-selector">
-    <label for="poemaSelect">Selecciona un poema:</label>
-    <select id="poemaSelect">
-      <option value="">-- Elige un poema --</option>
-      <option value="luces_viajeras.pdf">Luces viajeras</option>
-      <option value="el_circo.pdf">El circo</option>
-      <option value="lunas_silentes.pdf">Lunas silentes</option>
-    </select>
+  <div class="lista-poemas">
+    <button data-poema="poemas/luces_viajeras.pdf">Luces viajeras</button>
+    <button data-poema="poemas/el_circo.pdf">El circo</button>
+    <button data-poema="poemas/lunas_silentes.pdf">Lunas silentes</button>
   </div>
 
   <div id="visor-poema" class="visor-poema oculto">
-    <iframe id="pdfViewer" src="" title="Poema PDF" width="100%" height="700"></iframe>
+    <iframe id="pdfViewer" src="" title="Poema PDF"></iframe>
+    <p id="enlaceMovil" class="enlace-movil oculto">
+      📱 Si el visor no se muestra, 
+      <a href="#" target="_blank" id="pdfLink">abre el poema aquí</a>.
+    </p>
   </div>
 </section>
 
 <script>
-  const select = document.getElementById('poemaSelect');
-  const visor = document.getElementById('visor-poema');
-  const iframe = document.getElementById('pdfViewer');
+  const botones = document.querySelectorAll(".lista-poemas button");
+  const visor = document.getElementById("visor-poema");
+  const iframe = document.getElementById("pdfViewer");
+  const enlaceMovil = document.getElementById("enlaceMovil");
+  const pdfLink = document.getElementById("pdfLink");
 
-  select.addEventListener('change', () => {
-    const ruta = select.value;
-    if (ruta) {
+  botones.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const ruta = btn.getAttribute("data-poema");
       iframe.src = ruta;
-      visor.classList.remove('oculto');
-    } else {
-      visor.classList.add('oculto');
-      iframe.src = '';
-    }
+      pdfLink.href = ruta;
+      visor.classList.remove("oculto");
+
+      // En móviles, intentamos mostrar aviso/enlace si el visor no carga bien
+      if (/Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+        enlaceMovil.classList.remove("oculto");
+      } else {
+        enlaceMovil.classList.add("oculto");
+      }
+
+      // desplazamos suavemente hacia el visor
+      visor.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
   });
 </script>
+
 
     <section id="musica" class="section musica">
       <h2>Música</h2>
