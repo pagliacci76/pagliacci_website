@@ -1,8 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&display=swap');
+
 :root {
-  /* Paleta gótica oscura */
   --bg: #050505;
   --surface: #0b0b0b;
-  --text: #f0eaea;
+  --text: #f2f2f2;
   --muted: #9a8d87;
   --accent: #a10c0c;
   --accent-2: #5c0000;
@@ -10,27 +11,29 @@
   color-scheme: dark;
 }
 
-/* Reset básico */
-* { box-sizing: border-box; margin: 0; padding: 0; }
+/* Reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
 html, body {
   height: 100%;
   background-color: var(--bg);
   color: var(--text);
   font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Header gótico centrado */
+/* Header */
 .site-header {
   border-bottom: 1px solid var(--border);
   background: linear-gradient(180deg, #0b0b0b, #000);
   position: sticky;
   top: 0;
   z-index: 40;
-  padding: 28px 18px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.8);
+  padding: 32px 20px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.8);
 }
 
 /* Contenedor vertical centrado */
@@ -39,22 +42,25 @@ html, body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 18px;
+  gap: 22px;
   max-width: 1000px;
   margin: 0 auto;
 }
 
 /* Logo */
-.logo-top { display: flex; justify-content: center; }
+.logo-top {
+  display: flex;
+  justify-content: center;
+}
 
 .logo-wrapper {
-  width: 70px;
-  height: 70px;
+  width: 80px;
+  height: 80px;
   overflow: hidden;
   border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 0 25px rgba(161, 12, 12, 0.25);
-  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.02), rgba(0, 0, 0, 0.2));
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 25px rgba(161, 12, 12, 0.3);
+  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.03), rgba(0, 0, 0, 0.3));
 }
 
 .site-logo {
@@ -63,25 +69,24 @@ html, body {
   object-fit: cover;
   transition: transform 0.2s ease;
 }
-.logo-wrapper:hover .site-logo { transform: scale(1.07); }
+.logo-wrapper:hover .site-logo {
+  transform: scale(1.08);
+}
 
-/* Título gótico */
+/* Título */
 .title-large {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   text-align: center;
 }
 
 .site-title {
   margin: 0;
-  font-family: "Cinzel", "Georgia", serif;
-  font-size: 2.6rem;
+  font-family: "Cinzel", serif;
+  font-size: 2.8rem;
   font-weight: 800;
   color: var(--accent);
-  letter-spacing: 1px;
-  text-shadow: 0 0 10px rgba(161, 12, 12, 0.4), 0 4px 8px rgba(0, 0, 0, 0.8);
   text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 0 0 8px rgba(161, 12, 12, 0.6), 0 3px 8px rgba(0, 0, 0, 0.8);
 }
 
 .title-large .site-title::after {
@@ -89,101 +94,71 @@ html, body {
   display: block;
   width: 160px;
   height: 3px;
-  margin: 12px auto 0 auto;
+  margin: 12px auto 0;
   background: linear-gradient(90deg, var(--accent), var(--accent-2));
   border-radius: 3px;
-  opacity: 0.9;
 }
 
-/* Barra de navegación / búsqueda centrada */
+/* Navegación centrada */
 .main-nav {
   display: flex;
   justify-content: center;
   width: 100%;
-  margin-top: 8px;
 }
 
 .nav-list {
   display: flex;
-  gap: 12px;
+  gap: 16px;
   list-style: none;
-  padding: 0;
 }
 
 .nav-list a {
   display: inline-block;
-  padding: 10px 16px;
+  padding: 10px 18px;
   color: var(--text);
   background: rgba(255, 255, 255, 0.02);
-  border: 1px solid transparent;
   border-radius: 8px;
-  text-decoration: none;
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: 0.6px;
-  transition: background 0.2s, color 0.2s, transform 0.15s;
+  text-decoration: none;
+  transition: 0.2s ease;
 }
 .nav-list a:hover {
-  background: rgba(161, 12, 12, 0.15);
+  background: rgba(161, 12, 12, 0.18);
   color: var(--accent);
   transform: translateY(-2px);
-  border-color: rgba(161, 12, 12, 0.2);
-  box-shadow: 0 8px 25px rgba(161, 12, 12, 0.15);
+  box-shadow: 0 0 16px rgba(161, 12, 12, 0.3);
 }
 
-.nav-list a.active {
-  background: linear-gradient(90deg, rgba(161, 12, 12, 0.2), rgba(92, 0, 0, 0.25));
-  color: var(--accent);
-  border-color: rgba(161, 12, 12, 0.3);
-  box-shadow: 0 0 25px rgba(161, 12, 12, 0.25);
-}
-
-/* Poemas y secciones */
+/* Secciones */
 main {
-  padding: 32px 18px;
+  padding: 40px 20px;
   max-width: 900px;
   margin: 0 auto;
-}
-
-.section {
-  margin-bottom: 36px;
 }
 
 .section h2 {
   color: var(--accent);
   font-family: "Cinzel", serif;
-  font-size: 1.4rem;
-  margin-bottom: 10px;
-  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.8);
+  font-size: 1.5rem;
+  margin-bottom: 16px;
 }
 
-/* Caja de poema */
+/* Poema */
 .poema {
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(0, 0, 0, 0.2));
+  background: rgba(255, 255, 255, 0.02);
   border: 1px solid rgba(255, 255, 255, 0.05);
-  padding: 20px;
+  padding: 22px;
   border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
-  position: relative;
-  overflow: hidden;
-}
-
-.poema::before {
-  content: "";
-  position: absolute;
-  left: -50px;
-  top: -50px;
-  width: 130px;
-  height: 130px;
-  background: radial-gradient(circle at 30% 30%, rgba(161, 12, 12, 0.05), transparent 40%);
-  transform: rotate(15deg);
-  pointer-events: none;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.7);
+  margin-bottom: 28px;
 }
 
 .poema-titulo {
   font-family: "Cinzel", serif;
   color: var(--accent);
   font-weight: 800;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
 }
 
 .poema-autor {
@@ -194,7 +169,6 @@ main {
 .poema-cuerpo {
   margin-top: 10px;
   line-height: 1.6;
-  color: var(--text);
 }
 
 /* Música */
@@ -204,7 +178,6 @@ main {
   background: rgba(255, 255, 255, 0.02);
   border-radius: 8px;
   border: 1px solid rgba(255, 255, 255, 0.04);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.6);
 }
 
 /* Footer */
@@ -214,15 +187,4 @@ main {
   border-top: 1px solid rgba(255, 255, 255, 0.05);
   color: var(--muted);
   font-size: 0.9rem;
-}
-
-/* Links */
-a { color: var(--accent); }
-a:hover { color: var(--accent-2); }
-
-/* Accesibilidad */
-:focus {
-  outline: 2px solid rgba(161, 12, 12, 0.3);
-  outline-offset: 2px;
-  border-radius: 6px;
 }
