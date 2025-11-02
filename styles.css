@@ -1,22 +1,24 @@
 :root{
-  /* Colores: reemplaza estos valores con los que tenías anteriormente si quieres */
+  /* Colores (mantengo exactamente los tuyos) */
   --bg: #ffffff;
   --text: #222222;
   --accent: #b12a2a; /* color de acento */
   --muted: #666666;
 
-  /* Forzar scheme para evitar que navegadores móviles cambien colores en modo oscuro */
+  /* Evitar que navegadores móviles cambien automáticamente esquema de color */
   color-scheme: light;
 }
 
 /* Reset ligero */
 *{box-sizing:border-box}
+
+/* Reforzamos background-color y color usando las variables para que móviles no omitan los valores */
 html,body{
   margin:0;
   padding:0;
   height:100%;
-  background-color:var(--bg); /* usar background-color explícito (no solo background-image) */
-  color:var(--text);
+  background-color:var(--bg); /* explícito */
+  color:var(--text);           /* explícito */
   font-family:system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
   -webkit-font-smoothing:antialiased;
   -moz-osx-font-smoothing:grayscale;
@@ -26,7 +28,7 @@ html,body{
 .site-header{
   border-bottom: 1px solid rgba(0,0,0,0.06);
   padding:12px 16px;
-  /* conserva tu gradiente pero define fondo plano tambien */
+  /* conservar gradiente pero asegurar color de fondo base */
   background-color:var(--bg);
   background-image: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(255,255,255,0.96));
   background-repeat:no-repeat;
@@ -38,34 +40,31 @@ html,body{
 /* Contenedor de marca (logo + título + nav) */
 .brand{
   display:flex;
-  align-items:center;       /* centra verticalmente en pantallas grandes */
+  align-items:center;       /* centra verticalmente */
   gap:12px;
 }
 
-/* Wrapper para recortar el logo */
+/* Contenedor para recortar el logo (cropped) */
 .logo-wrapper{
-  width:56px;        /* tamaño visible del recorte */
-  height:56px;       /* mismo que width para recorte cuadrado */
+  width:56px;        /* tamaño visible del recorte; ajusta si quieres más pequeño/grande */
+  height:56px;
   flex:0 0 auto;
   overflow:hidden;   /* recorta la imagen dentro */
   display:block;
-  border-radius:8px; /* cambia a 50% para círculo */
+  border-radius:8px; /* cambia a 50% para círculo, si prefieres */
   background-color:transparent;
-  /* opcional: borde fino para separarlo del fondo */
-  /* border: 1px solid rgba(0,0,0,0.04); */
 }
 
-/* Logo: se ajusta y centra, usando object-fit para "recortar" visualmente */
+/* Logo: se adapta al contenedor y "se recorta" con object-fit:cover */
 .site-logo{
   width:100%;
   height:100%;
   object-fit:cover;  /* cover recorta la imagen para llenar el contenedor */
   display:block;
   transform-origin:center;
-  /* si quieres que parte del logo esté desplazada (más a la izquierda), usa transform: translateX(-10%); */
 }
 
-/* Título y navegación agrupados para manejo en móvil */
+/* Título y navegación agrupados */
 .title-and-nav{
   display:flex;
   align-items:center;
@@ -85,9 +84,6 @@ html,body{
   display:flex;
   align-items:center;
 }
-
-/* Si quieres que el logo y el título parezcan más "pegados", reduce el gap en .brand o ajusta margin-left negativo en .site-title */
-/* .site-title { margin-left: -6px; }  <-- usar solo si necesitas ajustar manualmente */
 
 /* Navegación principal */
 .main-nav ul{
@@ -131,15 +127,15 @@ main{padding:20px 16px;max-width:1000px;margin:0 auto}
 /* Pie */
 .site-footer{padding:12px 16px;border-top:1px solid rgba(0,0,0,0.04);text-align:center;color:var(--muted)}
 
-/* Responsive: en pantallas pequeñas apilar y ajustar tamaños */
+/* Responsive: en pantallas pequeñas mantén logo y título en la misma línea */
 @media (max-width:600px){
   .brand{
     align-items:center;
     gap:10px;
   }
   .title-and-nav{
-    /* mantén layout horizontal: logo y título en la misma línea en móvil */
-    flex-direction:row;          /* evita apilar para mantener logo al lado del título */
+    /* mantener en fila para que logo esté siempre al lado del título */
+    flex-direction:row;
     align-items:center;
     gap:10px;
     justify-content:flex-start;
@@ -152,7 +148,7 @@ main{padding:20px 16px;max-width:1000px;margin:0 auto}
   .site-title{font-size:1.05rem}
 }
 
-/* Opcional: variante circular en lugar de cuadrado (descomentar si prefieres círculo) */
+/* Variante opcional: recorte circular (descomenta si quieres círculo) */
 /*
 .logo-wrapper{
   border-radius:50%;
