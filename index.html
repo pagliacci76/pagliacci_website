@@ -1,87 +1,64 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#8b0000" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#8b0000">
   <title>pagliacci</title>
-  <link rel="stylesheet" href="styles.css?v=2">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <header class="site-header">
-    <div class="header-vertical">
-      <div class="logo-top">
-        <div class="logo-wrapper">
-          <img src="logo.png" alt="Logo de pagliacci" class="site-logo">
-        </div>
-      </div>
-
-      <div class="title-large">
-        <h1 class="site-title">pagliacci</h1>
-      </div>
-
-      <nav class="main-nav" aria-label="Menú principal">
-        <ul class="nav-list">
-          <li><a href="#poemas">Poemas</a></li>
-          <li><a href="#musica">Música</a></li>
-        </ul>
-      </nav>
+    <div class="logo-wrapper">
+      <img src="logo.png" alt="Logo de pagliacci" class="site-logo">
     </div>
+    <h1 class="site-title">pagliacci</h1>
+    <nav>
+      <ul class="nav-list">
+        <li><a href="#poemas">Poemas</a></li>
+        <li><a href="#musica">Música</a></li>
+      </ul>
+    </nav>
   </header>
 
   <main>
-<section id="poemas" class="section poemas">
-  <h2>Poemas</h2>
+    <section id="poemas" class="section poemas">
+      <h2>Poema destacado</h2>
+      <article class="poema">
+        <p>
+          Luces viajeras cruzan mi pecho,  
+          como astros rotos en la noche muda.  
+          Viajan sin rumbo, sin sueño, sin hecho,  
+          buscando un alma que nunca acuda.  
 
-  <div class="lista-poemas">
-    <button data-poema="luces_viajeras.pdf">Luces viajeras</button>
-    <button data-poema="el_circo.pdf">El circo</button>
-    <button data-poema="lunas_silentes.pdf">Lunas silentes</button>
-  </div>
-
-  <div id="visor-poema" class="visor-poema oculto">
-    <iframe id="pdfViewer" src="" title="Poema PDF"></iframe>
-    <p id="enlaceMovil" class="enlace-movil oculto">
-      📱 Si el visor no se muestra, 
-      <a href="#" target="_blank" id="pdfLink">abre el poema aquí</a>.
-    </p>
-  </div>
-</section>
-
-<script>
-  const botones = document.querySelectorAll(".lista-poemas button");
-  const visor = document.getElementById("visor-poema");
-  const iframe = document.getElementById("pdfViewer");
-  const enlaceMovil = document.getElementById("enlaceMovil");
-  const pdfLink = document.getElementById("pdfLink");
-
-  botones.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const ruta = btn.getAttribute("data-poema");
-      iframe.src = ruta;
-      pdfLink.href = ruta;
-      visor.classList.remove("oculto");
-
-      // En móviles, intentamos mostrar aviso/enlace si el visor no carga bien
-      if (/Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-        enlaceMovil.classList.remove("oculto");
-      } else {
-        enlaceMovil.classList.add("oculto");
-      }
-
-      // desplazamos suavemente hacia el visor
-      visor.scrollIntoView({ behavior: "smooth", block: "start" });
-    });
-  });
-</script>
-
+          Vuelan, caen, arden en mi costado,  
+          sombras rojas del tiempo extinto.  
+          Y en su fuego quedo sellado,  
+          mortal, errante, y distinto.
+        </p>
+        <p class="poema-autor">— Johan Gefrey Brausin Varón</p>
+      </article>
+    </section>
 
     <section id="musica" class="section musica">
       <h2>Música</h2>
-      <p>Aquí puedes listar pistas, playlists o insertar un reproductor.</p>
       <ul class="lista-musica">
-        <li>Pista 1 — [Artista]</li>
-        <li>Pista 2 — [Artista]</li>
+        <li>
+          <p>Pista 1 — Ecos del abismo</p>
+          <audio controls>
+            <source src="musica/ecos_del_abismo.mp3" type="audio/mpeg">
+            Tu navegador no soporta audio HTML5.
+          </audio>
+          <a class="descargar" href="musica/ecos_del_abismo.mp3" download>Descargar</a>
+        </li>
+        <li>
+          <p>Pista 2 — Sombras de invierno</p>
+          <audio controls>
+            <source src="musica/sombras_de_invierno.mp3" type="audio/mpeg">
+            Tu navegador no soporta audio HTML5.
+          </audio>
+          <a class="descargar" href="musica/sombras_de_invierno.mp3" download>Descargar</a>
+        </li>
       </ul>
     </section>
   </main>
