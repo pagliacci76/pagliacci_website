@@ -31,30 +31,39 @@
 
   <main>
     <section id="poemas" class="section poemas">
-      <h2>Poemas</h2>
+  <h2>Poemas</h2>
 
-      <!-- Plantilla/estructura de un poema -->
-      <article class="poema">
-        <header class="poema-meta">
-          <h3 class="poema-titulo">[Título del poema]</h3>
-          <p class="poema-autor">por <span>[Nombre del autor]</span></p>
-          <p class="poema-info">[Año / Notas / Estilo / Métrica]</p>
-        </header>
+  <div class="poema-selector">
+    <label for="poemaSelect">Selecciona un poema:</label>
+    <select id="poemaSelect">
+      <option value="">-- Elige un poema --</option>
+      <option value="luces_viajeras.pdf">Luces viajeras</option>
+      <option value="el_circo.pdf">El circo</option>
+      <option value="lunas_silentes.pdf">Lunas silentes</option>
+    </select>
+  </div>
 
-        <div class="poema-cuerpo">
-          <p class="estrofa">Verso 1 de la primera estrofa,
-Verso 2 de la primera estrofa,
-Verso 3 de la primera estrofa.</p>
+  <div id="visor-poema" class="visor-poema oculto">
+    <iframe id="pdfViewer" src="" title="Poema PDF" width="100%" height="700"></iframe>
+  </div>
+</section>
 
-          <p class="estrofa">Verso 1 de la segunda estrofa,
-Verso 2 de la segunda estrofa.</p>
-        </div>
+<script>
+  const select = document.getElementById('poemaSelect');
+  const visor = document.getElementById('visor-poema');
+  const iframe = document.getElementById('pdfViewer');
 
-        <footer class="poema-footer">
-          <p class="poema-notas">[Notas del poema o fuente]</p>
-        </footer>
-      </article>
-    </section>
+  select.addEventListener('change', () => {
+    const ruta = select.value;
+    if (ruta) {
+      iframe.src = ruta;
+      visor.classList.remove('oculto');
+    } else {
+      visor.classList.add('oculto');
+      iframe.src = '';
+    }
+  });
+</script>
 
     <section id="musica" class="section musica">
       <h2>Música</h2>
